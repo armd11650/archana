@@ -1,0 +1,2189 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://example.com'
+    description: ''
+    variables: {}
+info:
+  version : "1.0"
+  title: WhatsApp Business API
+  description: ''
+  termsOfService: ''
+  contact: {}
+  license:
+    name: ''
+paths:
+  /v1/users/login:
+    post:
+      summary: Login-User
+      operationId: Login-User
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example: ''
+            example: ''
+      tags:
+        - 00-Users
+  /v1/users:
+    post:
+      summary: Create-User
+      operationId: Create-User
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - $ref: '#/components/parameters/Authorization'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                username: armd1
+                password: '{{UserPassword}}'
+            example: |-
+              {
+                "username": "armd1",
+                "password": "{{UserPassword}}"
+              }
+      tags:
+        - 00-Users
+  '/v1/users/{AdminUsername}':
+    get:
+      summary: Get-Admin
+      operationId: Get-Admin
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - $ref: '#/components/parameters/AdminUsername'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 00-Users
+  /v1/users/armd1:
+    get:
+      summary: Get-User
+      operationId: Get-User
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 00-Users
+  '/v1/users/{UserUsername}':
+    put:
+      summary: Update-User
+      operationId: Update-User
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - $ref: '#/components/parameters/UserUsername'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                password: <New Password>
+            example: |-
+              {
+                "password": "<New Password>"
+              }
+      tags:
+        - 00-Users
+    delete:
+      summary: Delete-User
+      operationId: Delete-User
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: UserUsername
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: UserUsername
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 00-Users
+  /v1/users/logout:
+    post:
+      summary: Logout-User
+      operationId: Logout-User
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example: ''
+            example: ''
+      tags:
+        - 00-Users
+  /v1/settings/application:
+    get:
+      summary: Get-Settings
+      operationId: Get-Settings
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Application
+    patch:
+      summary: Update-Webhooks
+      operationId: Update-Webhooks
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                webhooks:
+                  url: '<Webhook URL, https>'
+            example: "{\n\t\"webhooks\": {\n       \"url\": \"<Webhook URL, https>\"\n    }\n}"
+      tags:
+        - Application
+    delete:
+      summary: Delete-App-Settings
+      operationId: Delete-App-Settings
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Application
+  /v1/account/shards:
+    get:
+      summary: Get-Shards
+      operationId: Get-Shards
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Application
+    post:
+      summary: Set-Shards
+      operationId: Set-Shards
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                cc: <Country Code>
+                phone_number: <Phone Number>
+                shards: 1 | 2 | 4 | 8 | 16 | 32
+                pin: <Two-Step PIN>
+            example: "{\n\t\"cc\": \"<Country Code>\",\n\t\"phone_number\": \"<Phone Number>\",\n\t\"shards\": \"1 | 2 | 4 | 8 | 16 | 32\",\n\t\"pin\": \"<Two-Step PIN>\"\n}"
+      tags:
+        - Application
+  /v1/settings/application/media/providers:
+    get:
+      summary: Get-Media-Providers
+      operationId: Get-Media-Providers
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Application
+    post:
+      summary: Update-Media-Providers
+      operationId: Update-Media-Providers
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                - name: <Provider Name>
+                  type: www
+                  config:
+                    bearer: <Bearer Auth Token>
+            example: "[\n\t{\n\t\t\"name\": \"<Provider Name>\",\n\t\t\"type\": \"www\",\n\t\t\"config\": {\n\t\t\t\"bearer\": \"<Bearer Auth Token>\"\n\t\t}\n\t}\n]"
+      tags:
+        - Application
+  /v1/settings/application/media/providers/<Provider Name>:
+    delete:
+      summary: Delete-Media-Providers
+      operationId: Delete-Media-Providers
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Application
+  /v1/settings/backup:
+    post:
+      summary: Backup-Settings
+      operationId: Backup-Settings
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                password: <Password for Backup>
+            example: "{\n\t\"password\": \"<Password for Backup>\"\n}"
+      tags:
+        - Backup/Restore
+  /v1/settings/restore:
+    post:
+      summary: Restore-Settings
+      operationId: Restore-Settings
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                password: <Password for Backup>
+                data: '<Data to Restore, from Backup API>'
+            example: "{\n\t\"password\": \"<Password for Backup>\",\n\t\"data\": \"<Data to Restore, from Backup API>\"\n}"
+      tags:
+        - Backup/Restore
+  /v1/settings/business/profile:
+    get:
+      summary: Get-Business-Profile
+      operationId: Get-Business-Profile
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Business Profile
+    post:
+      summary: Set-Business-Profile
+      operationId: Set-Business-Profile
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                address: <Business Profile Address>
+                description: <Business Profile Description>
+                email: <Business Profile Email>
+                vertical: <Business Profile Vertical>
+                websites:
+                  - 'https://www.whatsapp.com'
+                  - 'https://www.facebook.com'
+            example: "{\n\t\"address\": \"<Business Profile Address>\",\n\t\"description\": \"<Business Profile Description>\",\n\t\"email\": \"<Business Profile Email>\",\n\t\"vertical\": \"<Business Profile Vertical>\",\n\t\"websites\": [\"https://www.whatsapp.com\", \"https://www.facebook.com\"]\n}"
+      tags:
+        - Business Profile
+  /v1/settings/profile/about:
+    get:
+      summary: Get-Profile-About
+      operationId: Get-Profile-About
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Profile
+    patch:
+      summary: Set-Profile-About
+      operationId: Set-Profile-About
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                text: <About Profile>
+            example: "{\n\t\"text\": \"<About Profile>\"\n}"
+      tags:
+        - Profile
+  /v1/settings/profile/photo:
+    get:
+      summary: Get-Profile-Photo-Binary
+      operationId: Get-Profile-Photo-Binary
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Profile
+    post:
+      summary: Set-Profile-Photo
+      operationId: Set-Profile-Photo
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: image/jpeg
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+            example: {}
+      tags:
+        - Profile
+  /v1/settings/account/two-step:
+    post:
+      summary: Enable-Two-Step
+      operationId: Enable-Two-Step
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                pin: <Two-Step Verification PIN>
+            example: "{\n\t\"pin\": \"<Two-Step Verification PIN>\"\n}"
+      tags:
+        - Two-Step Verification
+    delete:
+      summary: Disable-Two-Step
+      operationId: Disable-Two-Step
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Two-Step Verification
+  /v1/account:
+    post:
+      summary: Request-Code
+      operationId: Request-Code
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                cc: <Country Code>
+                phone_number: <Phone Number>
+                method: < sms | voice >
+                cert: <Valid Cert from Business Manager>
+                pin: <Two-Step Verification PIN
+            example: "{\n\t\"cc\": \"<Country Code>\",\n\t\"phone_number\": \"<Phone Number>\",\n\t\"method\": \"< sms | voice >\",\n\t\"cert\": \"<Valid Cert from Business Manager>\",\n\t\"pin\": \"<Two-Step Verification PIN\"\n}"
+      tags:
+        - 02-Registration
+  /v1/account/verify:
+    post:
+      summary: Register-Account
+      operationId: Register-Account
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                code: <Registration Code Received via SMS/Voice>
+            example: "{\n\t\"code\": \"<Registration Code Received via SMS/Voice>\"\n}"
+      tags:
+        - 02-Registration
+  /v1/contacts:
+    post:
+      summary: Check-Contact
+      operationId: Check-Contact
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                blocking: wait
+                contacts:
+                  - '16315551000'
+                  - +1 631 555 1001
+                  - '6315551002'
+                  - '+919700960830'
+                  - +1 (631) 555-1004
+                  - '+919618032929'
+                  - 1-631-555-1005
+                  - '+27829005922'
+                  - '+27813835191'
+                force_check: false
+            example: "{\n\t\"blocking\": \"wait\",\n\t\"contacts\": [\n\t\t\"16315551000\",\n\t\t\"+1 631 555 1001\",\n\t\t\"6315551002\",\n        \"+919700960830\",\n\t\t\"+1 (631) 555-1004\",\n        \"+919618032929\",\n\t\t\"1-631-555-1005\",\n        \"+27829005922\",\n        \"+27813835191\"\n\t],\n\t\"force_check\":false\n\n\n}"
+      tags:
+        - 03-Contacts
+  /v1/contacts/:
+    post:
+      summary: Check-Contact-Async
+      operationId: Check-Contact-Async
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                contacts:
+                  - '{{Recipient-WA-ID}}'
+                force_check: <false (default) | true>
+            example: |-
+              {
+                 "contacts": [
+                    "{{Recipient-WA-ID}}"
+                 ],
+                 "force_check": "<false (default) | true>"
+              }
+      tags:
+        - 03-Contacts
+  /v1/contacts/919618032929/identity:
+    get:
+      summary: Contact-Get-Identity
+      operationId: Contact-Get-Identity
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 03-Contacts
+  '/v1/contacts/{Recipient-WA-ID}/identity':
+    put:
+      summary: Contact-Ack-Identity
+      operationId: Contact-Ack-Identity
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - $ref: '#/components/parameters/Recipient-WA-ID'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                hash: <identity hash>
+            example: |-
+              {
+                 "hash": "<identity hash>"
+              }
+      tags:
+        - 03-Contacts
+  /v1/messages:
+    post:
+      summary: Send-Text-Message
+      operationId: Send-Text-Message
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                to: '27829005922'
+                type: text
+                recipient_type: individual
+                text:
+                  body: Test message from whatsapp business api.
+            example: |
+              {
+                "to": "27829005922",
+                "type": "text",
+                "recipient_type": "individual",
+                "text": {
+                  "body": "Test message from whatsapp business api."
+                }
+              }
+      tags:
+        - 04-Messages
+  /v1/messages/:
+    post:
+      summary: Send-Image-Message-By-ID
+      operationId: Send-Image-Message-By-ID
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                to: '{{Recipient-WA-ID}}'
+                type: image
+                recipient_type: individual
+                image:
+                  caption: <Message Caption>
+                  id: '<Media Id, from Media API>'
+            example: "{\n\t\"to\": \"{{Recipient-WA-ID}}\",\n\t\"type\": \"image\",\n\t\"recipient_type\": \"individual\",\n\t\"image\": {\n\t\t\"caption\": \"<Message Caption>\",\n\t\t\"id\": \"<Media Id, from Media API>\"\n\t}\n}\n"
+      tags:
+        - 04-Messages
+  /v1/messages/<Message ID from Webhook>:
+    put:
+      summary: Mark-Message-As-Read
+      operationId: Mark-Message-As-Read
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                status: read
+            example: |
+              {
+                "status": "read"
+              }
+      tags:
+        - 04-Messages
+  /v1/media:
+    post:
+      summary: Upload-Media
+      operationId: Upload-Media
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: image/jpeg
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+            example: {}
+      tags:
+        - 05-Media
+  '/v1/media/{Test-Media-Id}':
+    get:
+      summary: Download-Media
+      operationId: Download-Media
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - $ref: '#/components/parameters/Test-Media-Id'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 05-Media
+    delete:
+      summary: Delete-Media
+      operationId: Delete-Media
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-Media-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-Media-Id
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 05-Media
+  /v1/stickerpacks:
+    get:
+      summary: Get-First-Party-Stickerpacks
+      operationId: Get-First-Party-Stickerpacks
+      parameters:
+        - $ref: '#/components/parameters/namespace'
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+    post:
+      summary: Create-Third-Party-Stickerpacks
+      operationId: Create-Third-Party-Stickerpacks
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                publisher: <Your Publisher Name>
+                name: <Your Sticker Pack Name>
+                ios_app_store_link: <Valid iOS App Store Link>
+                android_app_store_link: <Valid Android App Store Link>
+            example: "{\n\t\"publisher\": \"<Your Publisher Name>\",\n\t\"name\": \"<Your Sticker Pack Name>\",\n\t\"ios_app_store_link\": \"<Valid iOS App Store Link>\",\n\t\"android_app_store_link\": \"<Valid Android App Store Link>\"\n}"
+      tags:
+        - 06-Stickers
+  '/v1/stickerpacks/{Test-1P-Stickerpack-Id}':
+    get:
+      summary: Get-First-Party-Stickerpack-Info
+      operationId: Get-First-Party-Stickerpack-Info
+      parameters:
+        - name: namespace
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: whatsapp
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - $ref: '#/components/parameters/Test-1P-Stickerpack-Id'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+  '/v1/stickerpacks/{Test-1P-Stickerpack-Id}/stickers':
+    get:
+      summary: Get-First-Party-Stickers
+      operationId: Get-First-Party-Stickers
+      parameters:
+        - name: namespace
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: whatsapp
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-1P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-1P-Stickerpack-Id
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+  '/v1/stickerpacks/{Test-1P-Stickerpack-Id}/stickers/{Test-Sticker-Index}':
+    get:
+      summary: Get-First-Party-Sticker-Info
+      operationId: Get-First-Party-Sticker-Info
+      parameters:
+        - name: namespace
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: whatsapp
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-1P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-1P-Stickerpack-Id
+        - $ref: '#/components/parameters/Test-Sticker-Index'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+  '/v1/stickerpacks/{Test-3P-Stickerpack-Id}':
+    patch:
+      summary: Update-Third-Party-Stickerpack
+      operationId: Update-Third-Party-Stickerpack
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - $ref: '#/components/parameters/Test-3P-Stickerpack-Id'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                publisher: <Your Publisher Name>
+                name: <Your Sticker Pack Name>
+                ios_app_store_link: <Valid iOS App Store Link>
+                android_app_store_link: <Valid Android App Store Link>
+            example: "{\n\t\"publisher\": \"<Your Publisher Name>\",\n\t\"name\": \"<Your Sticker Pack Name>\",\n\t\"ios_app_store_link\": \"<Valid iOS App Store Link>\",\n\t\"android_app_store_link\": \"<Valid Android App Store Link>\"\n}"
+      tags:
+        - 06-Stickers
+    delete:
+      summary: Delete-Third-Party-Stickerpack
+      operationId: Delete-Third-Party-Stickerpack
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+    get:
+      summary: Get-Third-Party-Stickerpack-Info
+      operationId: Get-Third-Party-Stickerpack-Info
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+  '/v1/stickerpacks/{Test-3P-Stickerpack-Id}/stickers':
+    post:
+      summary: Create-Third-Party-Stickers
+      operationId: Create-Third-Party-Stickers
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                image_data_id: <Sticker Image Media Id>
+                emojis:
+                  - "\U0001F425"
+                  - "\U0001F603"
+            example: "{\n\t\"image_data_id\" : \"<Sticker Image Media Id>\",\n\t\"emojis\": [\"\U0001F425\", \"\U0001F603\"]\n}"
+      tags:
+        - 06-Stickers
+    get:
+      summary: Get-Third-Party-Stickers
+      operationId: Get-Third-Party-Stickers
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+  '/v1/stickerpacks/{Test-3P-Stickerpack-Id}/stickers/{Test-Sticker-Index}':
+    patch:
+      summary: Update-Third-Party-Sticker
+      operationId: Update-Third-Party-Sticker
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+        - name: Test-Sticker-Index
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-Sticker-Index
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                image_data_id: <Valid Image Media Id
+                emojis:
+                  - "\U0001F425"
+                  - "\U0001F603"
+            example: "{\n\t\"image_data_id\" : \"<Valid Image Media Id\",\n\t\"emojis\": [\"\U0001F425\", \"\U0001F603\"]\n}"
+      tags:
+        - 06-Stickers
+    delete:
+      summary: Delete-Third-Party-Sticker
+      operationId: Delete-Third-Party-Sticker
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+        - name: Test-Sticker-Index
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-Sticker-Index
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+    get:
+      summary: Get-Third-Party-Sticker-Info
+      operationId: Get-Third-Party-Sticker-Info
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Test-3P-Stickerpack-Id
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-3P-Stickerpack-Id
+        - name: Test-Sticker-Index
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Test-Sticker-Index
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 06-Stickers
+  /v1/health:
+    get:
+      summary: Check-Health
+      operationId: Check-Health
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 07-Health
+  /v1/stats/app:
+    get:
+      summary: Get-App-Stats
+      operationId: Get-App-Stats
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 07-Health
+  /v1/stats/app/internal:
+    get:
+      summary: Get-App-Internal-Stats
+      operationId: Get-App-Internal-Stats
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 07-Health
+  /v1/stats/db:
+    get:
+      summary: Get-DB-Stats
+      operationId: Get-DB-Stats
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 07-Health
+  /v1/stats/db/internal:
+    get:
+      summary: Get-DB-Internal-Stats
+      operationId: Get-DB-Internal-Stats
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 07-Health
+  /v1/support:
+    get:
+      summary: Get-Support-Info
+      operationId: Get-Support-Info
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 07-Health
+  /v1/certificates/external:
+    post:
+      summary: Upload-Certificate
+      operationId: Upload-Certificate
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: text/plain
+        - name: Content-Length
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: <content-size>
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+            example: {}
+      tags:
+        - 08-Certificates
+  /v1/certificates/external/ca:
+    get:
+      summary: Download-CA-Certificate
+      operationId: Download-CA-Certificate
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 08-Certificates
+  /v1/certificates/webhooks/ca:
+    post:
+      summary: Upload Webhook CA Certificate
+      operationId: UploadWebhookCACertificate
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: text/plain
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+            example: {}
+      tags:
+        - 08-Certificates
+    get:
+      summary: Download Webhook CA Certificate
+      operationId: DownloadWebhookCACertificate
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 08-Certificates
+    delete:
+      summary: Delete Webhook CA Certificate
+      operationId: DeleteWebhookCACertificate
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 08-Certificates
+  /v1/services/message/gc:
+    put:
+      summary: Delete-Messages-From-DB
+      operationId: Delete-Messages-From-DB
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example: ''
+            example: ''
+      tags:
+        - 09-Services
+  /metrics:
+    get:
+      summary: Metrics
+      description: Returns metrics for the Webapp
+      operationId: Metrics
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: 'Bearer {{AdminAuthToken}}'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - 10-Metrics-And-Stats
+components:
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+    bearer:
+      type: http
+      scheme: bearer
+  parameters:
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: application/json
+    Authorization:
+      name: Authorization
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: 'Bearer {{AdminAuthToken}}'
+    AdminUsername:
+      name: AdminUsername
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: AdminUsername
+    UserUsername:
+      name: UserUsername
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: UserUsername
+    Recipient-WA-ID:
+      name: Recipient-WA-ID
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: Recipient-WA-ID
+    Test-Media-Id:
+      name: Test-Media-Id
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: Test-Media-Id
+    namespace:
+      name: namespace
+      in: query
+      required: true
+      style: form
+      schema:
+        type: string
+        example: whatsapp
+    Test-1P-Stickerpack-Id:
+      name: Test-1P-Stickerpack-Id
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: Test-1P-Stickerpack-Id
+    Test-Sticker-Index:
+      name: Test-Sticker-Index
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: Test-Sticker-Index
+    Test-3P-Stickerpack-Id:
+      name: Test-3P-Stickerpack-Id
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: Test-3P-Stickerpack-Id
+security:
+  - basic: []
+  - bearer: []
+  - bearer: []
+  - bearer: []
+  - bearer: []
+  - bearer: []
+  - bearer: []
+  - bearer: []
+  - bearer: []
+tags: []
+externalDocs:
+  url: ''
+  description: ''
+warnings:
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/users/login
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : patch{{URL}}/v1/settings/application
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : patch{{URL}}/v1/settings/application
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : get{{URL}}/v1/account/shards
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : get{{URL}}/v1/settings/profile/photo
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : post{{URL}}/v1/messages/
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : get{{URL}}/v1/stickerpacks
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : get{{URL}}/v1/stats/app
+  - >-
+    Two GET or two POST methods for the same path are not allowed in OpenAPI
+    specification : get{{URL}}/v1/stats/db
