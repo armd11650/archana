@@ -1,0 +1,1775 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: WhatsApp Business API
+  description: ''
+  contact: {}
+host: example.com
+basePath: /
+securityDefinitions:
+  auth:
+    type: basic
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /v1/users/login:
+    post:
+      description: Login-User
+      summary: Login-User
+      tags:
+      - 00-Users
+      operationId: Login-User
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/users:
+    post:
+      description: Create-User
+      summary: Create-User
+      tags:
+      - 00-Users
+      operationId: Create-User
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "username": "armd1",
+              "password": "{{UserPassword}}"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/users/{UserUsername}:
+    get:
+      description: Get-User
+      summary: Get-User
+      tags:
+      - 00-Users
+      operationId: Get-User
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: UserUsername
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    put:
+      description: Update-User
+      summary: Update-User
+      tags:
+      - 00-Users
+      operationId: Update-User
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: UserUsername
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "password": "<New Password>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      description: Delete-User
+      summary: Delete-User
+      tags:
+      - 00-Users
+      operationId: Delete-User
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: UserUsername
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/users/logout:
+    post:
+      description: Logout-User
+      summary: Logout-User
+      tags:
+      - 00-Users
+      operationId: Logout-User
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/application:
+    get:
+      description: Get-Settings
+      summary: Get-Settings
+      tags:
+      - Application
+      operationId: Get-Settings
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    patch:
+      description: Update-Webhooks
+      summary: Update-Webhooks
+      tags:
+      - Application
+      operationId: Update-Webhooks
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "webhooks": {
+                   "url": "<Webhook URL, https>"
+                }
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      description: Delete-App-Settings
+      summary: Delete-App-Settings
+      tags:
+      - Application
+      operationId: Delete-App-Settings
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/account/shards:
+    get:
+      description: Get-Shards
+      summary: Get-Shards
+      tags:
+      - Application
+      operationId: Get-Shards
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Set-Shards
+      summary: Set-Shards
+      tags:
+      - Application
+      operationId: Set-Shards
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "cc": "<Country Code>",
+              "phone_number": "<Phone Number>",
+              "shards": "1 | 2 | 4 | 8 | 16 | 32",
+              "pin": "<Two-Step PIN>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/application/media/providers:
+    get:
+      description: Get-Media-Providers
+      summary: Get-Media-Providers
+      tags:
+      - Application
+      operationId: Get-Media-Providers
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Update-Media-Providers
+      summary: Update-Media-Providers
+      tags:
+      - Application
+      operationId: Update-Media-Providers
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            [
+              {
+                "name": "<Provider Name>",
+                "type": "www",
+                "config": {
+                  "bearer": "<Bearer Auth Token>"
+                }
+              }
+            ]
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/application/media/providers/<Provider Name>:
+    delete:
+      description: Delete-Media-Providers
+      summary: Delete-Media-Providers
+      tags:
+      - Application
+      operationId: Delete-Media-Providers
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/backup:
+    post:
+      description: Backup-Settings
+      summary: Backup-Settings
+      tags:
+      - Backup/Restore
+      operationId: Backup-Settings
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "password": "<Password for Backup>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/restore:
+    post:
+      description: Restore-Settings
+      summary: Restore-Settings
+      tags:
+      - Backup/Restore
+      operationId: Restore-Settings
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "password": "<Password for Backup>",
+              "data": "<Data to Restore, from Backup API>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/business/profile:
+    get:
+      description: Get-Business-Profile
+      summary: Get-Business-Profile
+      tags:
+      - Business Profile
+      operationId: Get-Business-Profile
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Set-Business-Profile
+      summary: Set-Business-Profile
+      tags:
+      - Business Profile
+      operationId: Set-Business-Profile
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "address": "<Business Profile Address>",
+              "description": "<Business Profile Description>",
+              "email": "<Business Profile Email>",
+              "vertical": "<Business Profile Vertical>",
+              "websites": ["https://www.whatsapp.com", "https://www.facebook.com"]
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/profile/about:
+    get:
+      description: Get-Profile-About
+      summary: Get-Profile-About
+      tags:
+      - Profile
+      operationId: Get-Profile-About
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    patch:
+      description: Set-Profile-About
+      summary: Set-Profile-About
+      tags:
+      - Profile
+      operationId: Set-Profile-About
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "text": "<About Profile>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/profile/photo:
+    get:
+      description: Get-Profile-Photo-Binary
+      summary: Get-Profile-Photo-Binary
+      tags:
+      - Profile
+      operationId: Get-Profile-Photo-Binary
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Set-Profile-Photo
+      summary: Set-Profile-Photo
+      tags:
+      - Profile
+      operationId: Set-Profile-Photo
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: file
+        in: formData
+        required: true
+        type: file
+        format: file
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/settings/account/two-step:
+    post:
+      description: Enable-Two-Step
+      summary: Enable-Two-Step
+      tags:
+      - Two-Step Verification
+      operationId: Enable-Two-Step
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "pin": "<Two-Step Verification PIN>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      description: Disable-Two-Step
+      summary: Disable-Two-Step
+      tags:
+      - Two-Step Verification
+      operationId: Disable-Two-Step
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/account:
+    post:
+      description: Request-Code
+      summary: Request-Code
+      tags:
+      - 02-Registration
+      operationId: Request-Code
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "cc": "<Country Code>",
+              "phone_number": "<Phone Number>",
+              "method": "< sms | voice >",
+              "cert": "<Valid Cert from Business Manager>",
+              "pin": "<Two-Step Verification PIN"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/account/verify:
+    post:
+      description: Register-Account
+      summary: Register-Account
+      tags:
+      - 02-Registration
+      operationId: Register-Account
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "code": "<Registration Code Received via SMS/Voice>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/contacts:
+    post:
+      description: Check-Contact
+      summary: Check-Contact
+      tags:
+      - 03-Contacts
+      operationId: Check-Contact
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "blocking": "wait",
+              "contacts": [
+                "16315551000",
+                "+1 631 555 1001",
+                "6315551002",
+                    "+919700960830",
+                "+1 (631) 555-1004",
+                    "+919618032929",
+                "1-631-555-1005",
+                    "+27829005922",
+                    "+27813835191"
+              ],
+              "force_check":false
+
+
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/contacts/:
+    post:
+      description: Check-Contact-Async
+      summary: Check-Contact-Async
+      tags:
+      - 03-Contacts
+      operationId: Check-Contact-Async
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+               "contacts": [
+                  "{{Recipient-WA-ID}}"
+               ],
+               "force_check": "<false (default) | true>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/contacts/919618032929/identity:
+    get:
+      description: Contact-Get-Identity
+      summary: Contact-Get-Identity
+      tags:
+      - 03-Contacts
+      operationId: Contact-Get-Identity
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/contacts/{Recipient-WA-ID}/identity:
+    put:
+      description: Contact-Ack-Identity
+      summary: Contact-Ack-Identity
+      tags:
+      - 03-Contacts
+      operationId: Contact-Ack-Identity
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Recipient-WA-ID
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+               "hash": "<identity hash>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/messages:
+    post:
+      description: Send-Text-Message
+      summary: Send-Text-Message
+      tags:
+      - 04-Messages
+      operationId: Send-Text-Message
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >
+            {
+              "to": "27829005922",
+              "type": "text",
+              "recipient_type": "individual",
+              "text": {
+                "body": "Test message from whatsapp business api."
+              }
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/messages/:
+    post:
+      description: Send-Image-Message-By-ID
+      summary: Send-Image-Message-By-ID
+      tags:
+      - 04-Messages
+      operationId: Send-Image-Message-By-ID
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >
+            {
+              "to": "{{Recipient-WA-ID}}",
+              "type": "image",
+              "recipient_type": "individual",
+              "image": {
+                "caption": "<Message Caption>",
+                "id": "<Media Id, from Media API>"
+              }
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/messages/<Message ID from Webhook>:
+    put:
+      description: Mark-Message-As-Read
+      summary: Mark-Message-As-Read
+      tags:
+      - 04-Messages
+      operationId: Mark-Message-As-Read
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >
+            {
+              "status": "read"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/media:
+    post:
+      description: Upload-Media
+      summary: Upload-Media
+      tags:
+      - 05-Media
+      operationId: Upload-Media
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: file
+        in: formData
+        required: true
+        type: file
+        format: file
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/media/{Test-Media-Id}:
+    get:
+      description: Download-Media
+      summary: Download-Media
+      tags:
+      - 05-Media
+      operationId: Download-Media
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Test-Media-Id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      description: Delete-Media
+      summary: Delete-Media
+      tags:
+      - 05-Media
+      operationId: Delete-Media
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Test-Media-Id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stickerpacks:
+    get:
+      description: Get-First-Party-Stickerpacks
+      summary: Get-First-Party-Stickerpacks
+      tags:
+      - 06-Stickers
+      operationId: Get-First-Party-Stickerpacks
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: namespace
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Create-Third-Party-Stickerpacks
+      summary: Create-Third-Party-Stickerpacks
+      tags:
+      - 06-Stickers
+      operationId: Create-Third-Party-Stickerpacks
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+              "publisher": "<Your Publisher Name>",
+              "name": "<Your Sticker Pack Name>",
+              "ios_app_store_link": "<Valid iOS App Store Link>",
+              "android_app_store_link": "<Valid Android App Store Link>"
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stickerpacks/{Test-1P-Stickerpack-Id}:
+    get:
+      description: Get-First-Party-Stickerpack-Info
+      summary: Get-First-Party-Stickerpack-Info
+      tags:
+      - 06-Stickers
+      operationId: Get-First-Party-Stickerpack-Info
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: namespace
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Test-1P-Stickerpack-Id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stickerpacks/{Test-1P-Stickerpack-Id}/stickers:
+    get:
+      description: Get-First-Party-Stickers
+      summary: Get-First-Party-Stickers
+      tags:
+      - 06-Stickers
+      operationId: Get-First-Party-Stickers
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: namespace
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Test-1P-Stickerpack-Id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stickerpacks/{Test-1P-Stickerpack-Id}/stickers/{Test-Sticker-Index}:
+    get:
+      description: Get-First-Party-Sticker-Info
+      summary: Get-First-Party-Sticker-Info
+      tags:
+      - 06-Stickers
+      operationId: Get-First-Party-Sticker-Info
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: namespace
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Test-1P-Stickerpack-Id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: Test-Sticker-Index
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+
+
+  /v1/health:
+    get:
+      description: Check-Health
+      summary: Check-Health
+      tags:
+      - 07-Health
+      operationId: Check-Health
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stats/app:
+    get:
+      description: Get-App-Stats
+      summary: Get-App-Stats
+      tags:
+      - 07-Health
+      operationId: Get-App-Stats
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stats/app/internal:
+    get:
+      description: Get-App-Internal-Stats
+      summary: Get-App-Internal-Stats
+      tags:
+      - 07-Health
+      operationId: Get-App-Internal-Stats
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stats/db:
+    get:
+      description: Get-DB-Stats
+      summary: Get-DB-Stats
+      tags:
+      - 07-Health
+      operationId: Get-DB-Stats
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/stats/db/internal:
+    get:
+      description: Get-DB-Internal-Stats
+      summary: Get-DB-Internal-Stats
+      tags:
+      - 07-Health
+      operationId: Get-DB-Internal-Stats
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/support:
+    get:
+      description: Get-Support-Info
+      summary: Get-Support-Info
+      tags:
+      - 07-Health
+      operationId: Get-Support-Info
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/certificates/external:
+    post:
+      description: Upload-Certificate
+      summary: Upload-Certificate
+      tags:
+      - 08-Certificates
+      operationId: Upload-Certificate
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Content-Length
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: file
+        in: formData
+        required: true
+        type: file
+        format: file
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/certificates/external/ca:
+    get:
+      description: Download-CA-Certificate
+      summary: Download-CA-Certificate
+      tags:
+      - 08-Certificates
+      operationId: Download-CA-Certificate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/certificates/webhooks/ca:
+    post:
+      description: Upload Webhook CA Certificate
+      summary: UploadWebhookCACertificate
+      tags:
+      - 08-Certificates
+      operationId: UploadWebhookCACertificate
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: file
+        in: formData
+        required: true
+        type: file
+        format: file
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      description: Download Webhook CA Certificate
+      summary: DownloadWebhookCACertificate
+      tags:
+      - 08-Certificates
+      operationId: DownloadWebhookCACertificate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      description: Delete Webhook CA Certificate
+      summary: DeleteWebhookCACertificate
+      tags:
+      - 08-Certificates
+      operationId: DeleteWebhookCACertificate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /v1/services/message/gc:
+    put:
+      description: Delete-Messages-From-DB
+      summary: Delete-Messages-From-DB
+      tags:
+      - 09-Services
+      operationId: Delete-Messages-From-DB
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /metrics:
+    get:
+      description: Returns metrics for the Webapp
+      summary: Metrics
+      tags:
+      - 10-Metrics-And-Stats
+      operationId: Metrics
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+security:
+- auth: []
+tags:
+- name: 00-Users
+  description: ''
+- name: Application
+  description: ''
+- name: Backup/Restore
+  description: ''
+- name: Business Profile
+  description: ''
+- name: Profile
+  description: ''
+- name: Two-Step Verification
+  description: ''
+- name: 02-Registration
+  description: ''
+- name: 03-Contacts
+  description: ''
+- name: 04-Messages
+  description: ''
+- name: 05-Media
+  description: ''
+- name: 06-Stickers
+  description: ''
+- name: 07-Health
+  description: ''
+- name: 08-Certificates
+  description: ''
+- name: 09-Services
+  description: ''
+- name: 10-Metrics-And-Stats
+  description: ''
